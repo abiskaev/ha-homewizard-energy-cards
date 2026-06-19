@@ -16,10 +16,6 @@ Everything is plain canvas-drawn web components (no external chart library), the
 
 ![Self-sufficient](screenshots/self-sufficient.png)
 
-**HomeWizard Today** — scenic daily overview with animated energy flows.
-
-![HomeWizard Today](screenshots/homewizard-today.png)
-
 **Home mains** — grid import (magenta) / export (green), dynamic axis.
 
 ![Home mains](screenshots/home-mains.png)
