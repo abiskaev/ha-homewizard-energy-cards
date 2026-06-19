@@ -1,0 +1,26 @@
+# This repo should only ever contain the cards, the archiver, and docs.
+# These patterns make sure nothing sensitive from a Home Assistant config can sneak in.
+.ha_token
+*.token
+secrets.yaml
+secrets.json
+*.db
+*.db-shm
+*.db-wal
+.storage/
+known_devices.yaml
+ip_bans.yaml
+*.pem
+*.key
+
+# generated archive data (per-install, not part of the release)
+www/energy-archive/
+energy-archive/
+
+# os / editor cruft
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+.vscode/
+.idea/
