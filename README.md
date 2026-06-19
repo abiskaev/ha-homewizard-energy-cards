@@ -10,14 +10,27 @@ Everything is plain canvas-drawn web components (no external chart library), the
 
 ## Screenshots
 
-_Screenshots of each card on a live dashboard will go here._
+> Live dashboard, **Day** view.
 
-<!-- Place PNGs in screenshots/ and reference them, e.g.:
+**Self-sufficient** — self-consumption (cyan), grid import (magenta) and surplus (green), with a self-sufficiency %.
+
 ![Self-sufficient](screenshots/self-sufficient.png)
-![Home mains](screenshots/home-mains.png)
-![Battery](screenshots/battery.png)
+
+**HomeWizard Today** — scenic daily overview with animated energy flows.
+
 ![HomeWizard Today](screenshots/homewizard-today.png)
--->
+
+**Home mains** — grid import (magenta) / export (green), dynamic axis.
+
+![Home mains](screenshots/home-mains.png)
+
+**Total production** — solar production.
+
+![Total production](screenshots/production.png)
+
+**HomeWizard Plug-In Battery** — charge/discharge power area + charge-% line (W left, % right).
+
+![Battery](screenshots/battery.png)
 
 ---
 
