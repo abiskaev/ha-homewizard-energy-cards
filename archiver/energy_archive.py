@@ -27,8 +27,8 @@ ENTITIES = [
     "sensor.home_consumption_power",
     "sensor.plug_in_battery_power",
     "sensor.total_solar_power",
-    "sensor.cmg1a4201v_output_power",        # Growatt live W (for the Growatt production card's past-day Day graph)
-    "sensor.sb3_0_1av_41_947_pv_power",      # SMA live W (for the SMA production card's past-day Day graph)
+    "sensor.growatt_output_power",        # Growatt live W (for the Growatt production card's past-day Day graph)
+    "sensor.sma_pv_power",      # SMA live W (for the SMA production card's past-day Day graph)
     "sensor.plug_in_battery_state_of_charge",  # battery charge % (for the battery card's past-day % line)
 ]
 NET = "sensor.p1_meter_power"
@@ -39,7 +39,7 @@ SELFSUFF_FILE = "selfsuff_daily.json"       # date -> [self_sufficient, grid_imp
 SELFSUFF = {}
 # self-sufficient (= consumption - grid import) via cumulative registers -> robust to recording gaps and
 # matches home_consumption_today:  ss = production - grid_export - battery_charge + battery_discharge
-PROD_REGS = ["sensor.cmg1a4201v_lifetime_energy_output", "sensor.sb3_0_1av_41_947_total_yield"]
+PROD_REGS = ["sensor.growatt_lifetime_energy_output", "sensor.sma_total_yield"]
 BAT_CHG_REG = "sensor.plug_in_battery_energy_import"
 BAT_DIS_REG = "sensor.plug_in_battery_energy_export"
 BUCKET_MIN = 5

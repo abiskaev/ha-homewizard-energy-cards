@@ -391,7 +391,7 @@
         period_entity: pick(c.period_entity, "input_select.energy_period"),
         date_entity: pick(c.date_entity, "input_datetime.energy_date"),
         stats: {
-          production: stats.production || ["sensor.cmg1a4201v_lifetime_total_solar_energy", "sensor.sb3_0_1av_41_947_total_yield"],
+          production: stats.production || ["sensor.growatt_lifetime_total_solar_energy", "sensor.sma_total_yield"],
           import: pick(stats.import, "sensor.p1_meter_energy_import"),
           export: pick(stats.export, "sensor.p1_meter_energy_export"),
           battery_charge: pick(stats.battery_charge, "sensor.plug_in_battery_energy_import"),
