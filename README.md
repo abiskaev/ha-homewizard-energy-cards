@@ -25,14 +25,16 @@ _Screenshots of each card on a live dashboard will go here._
 
 | File | Card (`type:`) | What it shows |
 |------|----------------|---------------|
-| `dist/home-mains-card.js` | `custom:home-mains-card` | Grid mains — live **Now** + **Day** power, **Week/Month/Year** energy bars; import magenta / export green, dynamic axis, optional 3-phase distribution toggle. |
-| `dist/phase-mains-card.js` | `custom:phase-mains-card` | Per-phase grid power (L1/L2/L3); export drawn below zero (green); follows the energy date picker. |
-| `dist/self-sufficient-card.js` | `custom:self-sufficient-card` | Self-sufficiency — consumption vs production with the overlap (self-sufficient) filled cyan, grid import magenta, surplus green, plus a self-sufficiency **%**. |
-| `dist/battery-card.js` | `custom:battery-card` | Plug-in battery — charge/discharge power area + charge-% line (**Now/Day**); grouped charged/discharged energy bars (**Week/Month/Year**). |
-| `dist/production-card.js` | `custom:production-card` | Solar production (single green series) — live **Now** + **Day** + **Week/Month/Year** bars. Parameterizable for **Total** or **per-inverter** (e.g. Growatt, SMA). |
-| `dist/homewizard-today-card.js` | `custom:homewizard-today-card` | A scenic **Today** overview (production, self-sufficient, grid, cost, surplus) with animated energy flows. |
-| `dist/usage-card.js` | `custom:usage-card` | Household consumption with a battery-charging breakdown (magenta total, purple battery portion within). |
-| `dist/energy-header-card.js` | `custom:energy-header-card` | The fixed **date picker + period tabs** (Now / Day / Week / Month / Year) that all the other cards follow. |
+| `src/home-mains-card.js` | `custom:home-mains-card` | Grid mains — live **Now** + **Day** power, **Week/Month/Year** energy bars; import magenta / export green, dynamic axis, optional 3-phase distribution toggle. |
+| `src/phase-mains-card.js` | `custom:phase-mains-card` | Per-phase grid power (L1/L2/L3); export drawn below zero (green); follows the energy date picker. |
+| `src/self-sufficient-card.js` | `custom:self-sufficient-card` | Self-sufficiency — consumption vs production with the overlap (self-sufficient) filled cyan, grid import magenta, surplus green, plus a self-sufficiency **%**. |
+| `src/battery-card.js` | `custom:battery-card` | Plug-in battery — charge/discharge power area + charge-% line (**Now/Day**); grouped charged/discharged energy bars (**Week/Month/Year**). |
+| `src/production-card.js` | `custom:production-card` | Solar production (single green series) — live **Now** + **Day** + **Week/Month/Year** bars. Parameterizable for **Total** or **per-inverter** (e.g. Growatt, SMA). |
+| `src/homewizard-today-card.js` | `custom:homewizard-today-card` | A scenic **Today** overview (production, self-sufficient, grid, cost, surplus) with animated energy flows. |
+| `src/usage-card.js` | `custom:usage-card` | Household consumption with a battery-charging breakdown (magenta total, purple battery portion within). |
+| `src/energy-header-card.js` | `custom:energy-header-card` | The fixed **date picker + period tabs** (Now / Day / Week / Month / Year) that all the other cards follow. |
+
+> All eight ship pre-built as a single file, **`dist/ha-homewizard-energy-cards.js`** — that's what HACS installs.
 
 ---
 
@@ -50,24 +52,18 @@ This keeps every card internally consistent: Growatt + SMA production = Total pr
 
 ## Installation
 
-### Option A — HACS (recommended)
+### Option A — HACS (recommended · one resource, all cards)
 
-1. **HACS → ⋮ → Custom repositories** → add `https://github.com/abiskaev/ha-homewizard-energy-cards` with category **Dashboard**.
-2. Install **HomeWizard-style Energy Cards**. HACS downloads all the cards to `/hacsfiles/ha-homewizard-energy-cards/` and auto-registers the main one (`home-mains-card.js`) as a dashboard resource.
-3. For each **additional** card you want, add a resource (Settings → Dashboards → ⋮ → Resources), type **JavaScript Module**:
-   ```
-   /hacsfiles/ha-homewizard-energy-cards/self-sufficient-card.js
-   ```
-   …one line per card.
+1. **HACS → ⋮ → Custom repositories** → add `https://github.com/abiskaev/ha-homewizard-energy-cards`, category **Dashboard**.
+2. Install **HomeWizard-style Energy Cards**. HACS adds the bundled `ha-homewizard-energy-cards.js` as a single dashboard resource — **all eight cards are then available**, nothing else to register.
 
 ### Option B — Manual
 
-1. Copy the `dist/*.js` you want into your Home Assistant `config/www/` folder.
-2. Register each as a dashboard **resource** (a `?v=` query is handy for cache-busting on updates):
-   ```yaml
-   - url: /local/self-sufficient-card.js?v=1
-     type: module
-   ```
+Copy **either** the bundle `dist/ha-homewizard-energy-cards.js` (all cards in one file) **or** the individual `src/*.js` files you want into `config/www/`, then register what you copied as a resource (`?v=` helps cache-busting):
+```yaml
+- url: /local/ha-homewizard-energy-cards.js?v=1
+  type: module
+```
 
 ### Then
 
